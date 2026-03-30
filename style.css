@@ -1,10 +1,12 @@
+
 body{
 
-font-family: "Times New Roman", serif;
+font-family:"Times New Roman", serif;
 margin:0;
 background:white;
 
 }
+
 
 /* NAVBAR */
 
@@ -15,7 +17,6 @@ justify-content:space-between;
 align-items:center;
 
 padding:30px 80px;
-
 border-bottom:1px solid #eee;
 
 }
@@ -28,29 +29,55 @@ color:black;
 
 }
 
-/* GRID LAYOUT */
 
-.archive-grid{
+/* BOOK */
 
-display:grid;
+.book{
 
-grid-template-columns: repeat(3, 1fr);
-
-gap:80px;
-
-padding:80px;
+width:900px;
+margin:80px auto;
 
 }
 
-/* ARCHIVE ITEM */
 
-.archive-item img{
+/* PAGE */
+
+.page{
+
+display:none;
+
+}
+
+.page.active{
+
+display:block;
+
+}
+
+
+/* SPREAD */
+
+.spread{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:120px;
+
+}
+
+
+/* ITEM */
+
+.item img{
 
 width:100%;
 
 }
 
-/* SMALL NUMBER */
+
+/* NUMBER */
 
 .number{
 
@@ -59,12 +86,12 @@ color:#777;
 
 }
 
+
 /* CAPTION */
 
 .caption{
 
 font-size:12px;
-
 margin-top:6px;
 
 }
