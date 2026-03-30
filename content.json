@@ -2,23 +2,28 @@
  "items":[
 
   {
-   "number":"10",
+   "number":"1",
    "caption":"Introduction",
    "image":"images/img1.jpg",
    "link":"pages/project1.html"
   },
-
+ {
+   "number":"6",
+   "caption":"Films",
+   "image":"images/M_8.jpg",
+   "link":"#"
+  },
   {
-   "number":"12",
-   "caption":"Sunday Forever",
-   "image":"images/img2.jpg",
+   "number":"8",
+   "caption":"Books",
+   "image":"images/B_3.jpg",
    "link":"#"
   },
 
   {
-   "number":"63",
-   "caption":"Issue III",
-   "image":"images/img1.jpg",
+   "number":"13",
+   "caption":"Writing",
+   "image":"images/img_3253.jpg",
    "link":"#"
   }
 
