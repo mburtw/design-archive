@@ -12,74 +12,51 @@
 
 <style>
 
-/* PAGE TITLE */
+/* TITLE */
 
 .page-title{
 text-align:center;
 margin-top:80px;
-margin-bottom:60px;
+margin-bottom:100px;
 letter-spacing:2px;
 font-size:28px;
 }
 
 
-/* FILM SNAKE CONTAINER */
+/* TIMELINE CONTAINER */
 
-.film-container{
+.timeline{
 
-max-width:1200px;
+max-width:1100px;
 margin:auto;
 padding:40px;
 
 display:flex;
 flex-direction:column;
-gap:50px;
+gap:70px;
 
 }
 
 
-/* ROWS */
-
-.film-row{
-
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-transition:all .4s ease;
-
-}
-
-/* zig zag */
-
-.film-row:nth-child(even){
-
-justify-content:flex-end;
-
-}
-
-
-/* FILM ITEM */
+/* FILM NODE */
 
 .film{
 
 position:relative;
-
-flex:0 0 120px;   /* HALF SIZE */
+width:120px;   /* half size */
 
 transition:all .35s ease;
-
-cursor:pointer;
 
 }
 
 
-/* ENLARGE ON HOVER */
+/* EXPAND ON HOVER */
 
 .film:hover{
 
-flex:0 0 240px;   /* FULL SIZE */
+width:240px;
 
-z-index:2;
+z-index:5;
 
 }
 
@@ -94,7 +71,7 @@ display:block;
 }
 
 
-/* HOVER PANEL */
+/* HOVER CARD */
 
 .hover-info{
 
@@ -119,8 +96,6 @@ overflow:auto;
 }
 
 
-/* SHOW TEXT */
-
 .film:hover .hover-info{
 
 opacity:1;
@@ -128,7 +103,7 @@ opacity:1;
 }
 
 
-/* TEXT STYLES */
+/* TEXT */
 
 .film-title{
 
@@ -141,7 +116,6 @@ font-size:12pt;
 
 font-weight:bold;
 font-size:11pt;
-
 margin-top:4px;
 
 }
@@ -151,24 +125,51 @@ margin-top:4px;
 font-size:9pt;
 margin-top:8px;
 
-line-height:1.3;
-
 }
+
+
+/* SNAKE POSITIONS */
+
+.pos1{margin-left:0%;}
+.pos2{margin-left:30%;}
+.pos3{margin-left:55%;}
+.pos4{margin-left:75%;}
+.pos5{margin-left:45%;}
+.pos6{margin-left:15%;}
+.pos7{margin-left:35%;}
+.pos8{margin-left:65%;}
+.pos9{margin-left:85%;}
+.pos10{margin-left:60%;}
+.pos11{margin-left:30%;}
+.pos12{margin-left:10%;}
+.pos13{margin-left:25%;}
+.pos14{margin-left:50%;}
+.pos15{margin-left:75%;}
+.pos16{margin-left:60%;}
+.pos17{margin-left:40%;}
+.pos18{margin-left:20%;}
 
 
 /* MOBILE */
 
 @media (max-width:700px){
 
+.timeline{
+
+gap:40px;
+
+}
+
 .film{
 
-flex:0 0 45%;
+margin-left:0 !important;
+width:60%;
 
 }
 
 .film:hover{
 
-flex:0 0 80%;
+width:90%;
 
 }
 
@@ -201,89 +202,47 @@ flex:0 0 80%;
 <h1 class="page-title">FILMS I'VE SEEN THIS YEAR</h1>
 
 
-<div class="film-container">
+<div class="timeline">
 
 
-<!-- ROW 1 -->
+<div class="film pos1"><img src="../images/M_1.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film-row">
+<div class="film pos2"><img src="../images/M_2.png"><div class="hover-info"><div class="film-title">Film Title (2023)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_1.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Write your thoughts about this film here.</div></div></div>
+<div class="film pos3"><img src="../images/M_3.png"><div class="hover-info"><div class="film-title">Film Title (2022)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_2.png"><div class="hover-info"><div class="film-title">Film Title (2023)</div><div class="film-director">Director Name</div><div class="film-review">Short review text goes here.</div></div></div>
+<div class="film pos4"><img src="../images/M_4.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_3.png"><div class="hover-info"><div class="film-title">Film Title (2022)</div><div class="film-director">Director Name</div><div class="film-review">Your commentary about the movie.</div></div></div>
+<div class="film pos5"><img src="../images/M_5.png"><div class="hover-info"><div class="film-title">Film Title (2021)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-</div>
+<div class="film pos6"><img src="../images/M_6.png"><div class="hover-info"><div class="film-title">Film Title (2020)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
+<div class="film pos7"><img src="../images/M_7.png"><div class="hover-info"><div class="film-title">Film Title (2019)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<!-- ROW 2 -->
+<div class="film pos8"><img src="../images/M_8.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film-row">
+<div class="film pos9"><img src="../images/M_9.png"><div class="hover-info"><div class="film-title">Film Title (2023)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_4.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
+<div class="film pos10"><img src="../images/M_10.png"><div class="hover-info"><div class="film-title">Film Title (2022)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_5.png"><div class="hover-info"><div class="film-title">Film Title (2021)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
+<div class="film pos11"><img src="../images/M_11.png"><div class="hover-info"><div class="film-title">Film Title (2021)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_6.png"><div class="hover-info"><div class="film-title">Film Title (2020)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
+<div class="film pos12"><img src="../images/M_12.png"><div class="hover-info"><div class="film-title">Film Title (2020)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-</div>
+<div class="film pos13"><img src="../images/M_13.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
+<div class="film pos14"><img src="../images/M_14.png"><div class="hover-info"><div class="film-title">Film Title (2023)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<!-- ROW 3 -->
+<div class="film pos15"><img src="../images/M_15.png"><div class="hover-info"><div class="film-title">Film Title (2022)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film-row">
+<div class="film pos16"><img src="../images/M_16.png"><div class="hover-info"><div class="film-title">Film Title (2021)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_7.png"><div class="hover-info"><div class="film-title">Film Title (2019)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
+<div class="film pos17"><img src="../images/M_17.png"><div class="hover-info"><div class="film-title">Film Title (2020)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
-<div class="film"><img src="../images/M_8.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_9.png"><div class="hover-info"><div class="film-title">Film Title (2023)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-</div>
-
-
-<!-- ROW 4 -->
-
-<div class="film-row">
-
-<div class="film"><img src="../images/M_10.png"><div class="hover-info"><div class="film-title">Film Title (2022)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_11.png"><div class="hover-info"><div class="film-title">Film Title (2021)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_12.png"><div class="hover-info"><div class="film-title">Film Title (2020)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-</div>
-
-
-<!-- ROW 5 -->
-
-<div class="film-row">
-
-<div class="film"><img src="../images/M_13.png"><div class="hover-info"><div class="film-title">Film Title (2024)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_14.png"><div class="hover-info"><div class="film-title">Film Title (2023)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_15.png"><div class="hover-info"><div class="film-title">Film Title (2022)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-</div>
-
-
-<!-- ROW 6 -->
-
-<div class="film-row">
-
-<div class="film"><img src="../images/M_16.png"><div class="hover-info"><div class="film-title">Film Title (2021)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_17.png"><div class="hover-info"><div class="film-title">Film Title (2020)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-<div class="film"><img src="../images/M_18.png"><div class="hover-info"><div class="film-title">Film Title (2019)</div><div class="film-director">Director Name</div><div class="film-review">Review paragraph.</div></div></div>
-
-</div>
+<div class="film pos18"><img src="../images/M_18.png"><div class="hover-info"><div class="film-title">Film Title (2019)</div><div class="film-director">Director Name</div><div class="film-review">Review text.</div></div></div>
 
 
 </div>
-
 
 </body>
 </html>
