@@ -1,11 +1,10 @@
 body{
 
+font-family: "Times New Roman", serif;
 margin:0;
-font-family:"Times New Roman",serif;
 background:white;
 
 }
-
 
 /* NAVBAR */
 
@@ -21,51 +20,37 @@ border-bottom:1px solid #eee;
 
 }
 
-.nav{
+.nav-links a{
 
-display:flex;
-gap:30px;
-list-style:none;
-
-}
-
-.nav a{
-
+margin-left:25px;
 text-decoration:none;
 color:black;
 
 }
 
+/* GRID LAYOUT */
 
-/* BOOK */
+.archive-grid{
 
-#book{
+display:grid;
 
-width:900px;
-height:600px;
-margin:80px auto;
+grid-template-columns: repeat(3, 1fr);
 
-}
+gap:80px;
 
-
-/* PAGE */
-
-.page{
-
-background:white;
-padding:60px;
+padding:80px;
 
 }
 
+/* ARCHIVE ITEM */
 
-/* ITEM */
-
-.item img{
+.archive-item img{
 
 width:100%;
 
 }
 
+/* SMALL NUMBER */
 
 .number{
 
@@ -74,10 +59,12 @@ color:#777;
 
 }
 
+/* CAPTION */
+
 .caption{
 
 font-size:12px;
 
-margin-top:5px;
+margin-top:6px;
 
 }
