@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Films I've Seen This Year</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+
+/* PAGE TITLE */
+
+.page-title{
+margin-top:80px;
+margin-bottom:60px;
+text-align:center;
+font-size:28px;
+letter-spacing:2px;
+}
+
+
+/* FILM GRID */
+
+.film-container{
+
+max-width:1100px;
+margin:auto;
+padding:40px;
+
+display:flex;
+flex-direction:column;
+gap:80px;
+
+}
+
+
+/* ROW */
+
+.film-row{
+
+display:flex;
+gap:40px;
+
+}
+
+
+/* ZIG ZAG */
+
+.film-row:nth-child(even){
+
+justify-content:flex-end;
+
+}
+
+
+/* IMAGE BLOCK */
+
+.film{
+
+position:relative;
+width:220px;
+
+}
+
+
+/* IMAGE */
+
+.film img{
+
+width:100%;
+display:block;
+
+}
+
+
+/* HOVER CARD */
+
+.hover-info{
+
+position:absolute;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(255,255,255,0.95);
+
+padding:15px;
+
+opacity:0;
+transition:0.3s;
+
+overflow:auto;
+
+}
+
+
+/* SHOW HOVER */
+
+.film:hover .hover-info{
+
+opacity:1;
+
+}
+
+
+/* TEXT STYLES */
+
+.film-title{
+
+font-weight:bold;
+font-size:12pt;
+
+}
+
+.film-director{
+
+font-weight:bold;
+font-size:11pt;
+
+margin-top:4px;
+
+}
+
+.film-review{
+
+font-size:9pt;
+margin-top:8px;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width:700px){
+
+.film-row{
+
+justify-content:center !important;
+flex-wrap:wrap;
+
+}
+
+.film{
+
+width:45%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<h2>Archive</h2>
+
+<div class="nav-links">
+
+<a href="../index.html">Home</a>
+<a href="#">Lists</a>
+<a href="#">Projects</a>
+<a href="#">About</a>
+
+</div>
+
+</nav>
+
+
+<h1 class="page-title">FILMS I'VE SEEN THIS YEAR</h1>
+
+
+<div class="film-container">
+
+<!-- ROW 1 -->
+
+<div class="film-row">
+
+<div class="film">
+
+<img src="../images/M_1.png">
+
+<div class="hover-info">
+
+<div class="film-title">Film Title (2024)</div>
+<div class="film-director">Director Name</div>
+<div class="film-review">
+Write your short review here. Talk about the tone, cinematography,
+performances, or why the film stuck with you.
+</div>
+
+</div>
+</div>
+
+<div class="film">
+
+<img src="../images/M_2.png">
+
+<div class="hover-info">
+
+<div class="film-title">Film Title (2024)</div>
+<div class="film-director">Director Name</div>
+<div class="film-review">
+Write your short review here.
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- ROW 2 -->
+
+<div class="film-row">
+
+<div class="film">
+
+<img src="../images/M_3.png">
+
+<div class="hover-info">
+
+<div class="film-title">Film Title (2023)</div>
+<div class="film-director">Director Name</div>
+<div class="film-review">
+Your review text goes here.
+</div>
+
+</div>
+</div>
+
+<div class="film">
+
+<img src="../images/M_4.png">
+
+<div class="hover-info">
+
+<div class="film-title">Film Title (2022)</div>
+<div class="film-director">Director Name</div>
+<div class="film-review">
+Your review text goes here.
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
