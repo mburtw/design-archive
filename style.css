@@ -6,7 +6,56 @@ margin:0;
 background:white;
 
 }
+.selection-area{
 
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+cursor:none;
+
+}
+
+.selection-wheel{
+
+width:600px;
+height:600px;
+
+position:relative;
+
+border-radius:50%;
+
+transition:transform 2s linear;
+
+}
+
+.wheel-item{
+
+position:absolute;
+
+width:80px;
+
+opacity:.5;
+
+transition:transform .3s, opacity .3s;
+
+}
+
+.wheel-item img{
+
+width:100%;
+
+}
+
+.wheel-item.active{
+
+transform:scale(1.8);
+
+opacity:1;
+
+}
 /* HIDE DEFAULT CURSOR */
 
 body{
