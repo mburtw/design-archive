@@ -11,7 +11,64 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+.navbar{
 
+cursor:auto;
+
+}
+  /* SUGGEST FILM OVERLAY */
+
+.suggest-box{
+
+position:fixed;
+
+bottom:30px;
+right:30px;
+
+width:260px;
+
+background:black;
+color:white;
+
+padding:20px;
+
+border-radius:14px;
+
+box-shadow:0 12px 40px rgba(0,0,0,.25);
+
+z-index:999;
+
+font-family:sans-serif;
+
+cursor:auto;
+
+}/* SUGGEST FILM OVERLAY */
+
+.suggest-box{
+
+position:fixed;
+
+bottom:30px;
+right:30px;
+
+width:260px;
+
+background:black;
+color:white;
+
+padding:20px;
+
+border-radius:14px;
+
+box-shadow:0 12px 40px rgba(0,0,0,.25);
+
+z-index:999;
+
+font-family:sans-serif;
+
+cursor:auto;
+
+}
 /* TITLE */
 
 .page-title{
@@ -476,6 +533,20 @@ closest.classList.add("active")
 })
 
 </script>
-  
+ <div class="suggest-box">
+
+<strong>Suggest a film</strong>
+
+<form action="mailto:molly.burt.westvig@gmail.com" method="post" enctype="text/plain">
+
+<input type="text" name="film" placeholder="Film title">
+
+<input type="text" name="name" placeholder="Your name">
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div> 
 </body>
 </html>
