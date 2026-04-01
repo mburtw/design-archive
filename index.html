@@ -27,64 +27,7 @@
 
 </nav>
 
-<div class="selection-area">
 
-<div class="selection-wheel" id="wheel">
-.selection-area{
-
-height:100vh;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-cursor:none;
-
-}
-
-
-.selection-wheel{
-
-position:relative;
-
-width:600px;
-height:600px;
-
-border-radius:50%;
-
-}
-
-
-.wheel-item{
-
-position:absolute;
-
-width:90px;
-
-transition:
-transform .3s,
-opacity .3s;
-
-opacity:.5;
-
-}
-
-.wheel-item img{
-
-width:100%;
-
-}
-
-
-.wheel-item.active{
-
-transform:scale(1.8);
-
-opacity:1;
-
-z-index:5;
-
-}
 <!-- items inserted by JS -->
 <script>
 
@@ -100,92 +43,7 @@ const items = [
 
 </script><script>
 
-const wheel = document.getElementById("wheel")
 
-const count = 10
-
-for(let i=0;i<count;i++){
-
-const item = items[Math.floor(Math.random()*items.length)]
-
-const div = document.createElement("a")
-
-div.className="wheel-item"
-
-div.href=item.link
-
-div.innerHTML=`<img src="${item.img}">`
-
-const angle = (i/count)*360
-
-div.style.transform =
-`rotate(${angle}deg) translate(260px) rotate(-${angle}deg)`
-
-wheel.appendChild(div)
-
-}
-
-</script><script>
-
-const wheelItems = document.querySelectorAll(".wheel-item")
-
-document.querySelector(".selection-area")
-.addEventListener("mousemove", e=>{
-
-const rect = wheel.getBoundingClientRect()
-
-const centerX = rect.left + rect.width/2
-const centerY = rect.top + rect.height/2
-
-const angle = Math.atan2(
-e.clientY-centerY,
-e.clientX-centerX
-)
-
-let index = Math.round(
-((angle+Math.PI)/(2*Math.PI))*wheelItems.length
-)
-
-wheelItems.forEach(i=>i.classList.remove("active"))
-
-if(wheelItems[index])
-wheelItems[index].classList.add("active")
-
-})
-
-</script><script>
-
-const wheelItems = document.querySelectorAll(".wheel-item")
-
-document.querySelector(".selection-area")
-.addEventListener("mousemove", e=>{
-
-const rect = wheel.getBoundingClientRect()
-
-const centerX = rect.left + rect.width/2
-const centerY = rect.top + rect.height/2
-
-const angle = Math.atan2(
-e.clientY-centerY,
-e.clientX-centerX
-)
-
-let index = Math.round(
-((angle+Math.PI)/(2*Math.PI))*wheelItems.length
-)
-
-wheelItems.forEach(i=>i.classList.remove("active"))
-
-if(wheelItems[index])
-wheelItems[index].classList.add("active")
-
-})
-
-</script>.selection-area{
-cursor:none;
-}.navbar{
-cursor:auto;
-}
 </div>
 
 </div>
