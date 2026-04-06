@@ -115,8 +115,8 @@ opacity:.6;
 
 }
 
-
-/* WHEEL AREA */
+entries.sort(()=>Math.random()-0.5)
+  /* WHEEL AREA */
 
 .wheel-area{
 
@@ -283,17 +283,44 @@ el.addEventListener("mouseleave",()=>cursor.classList.remove("clickable"))
 
 const entries=[
 
-{img:"images/books/B_1.png",page:"pages/books.html",type:"Books"},
-{img:"images/books/B_2.png",page:"pages/books.html",type:"Books"},
-{img:"images/books/B_3.png",page:"pages/books.html",type:"Books"},
+const entries=[
 
-{img:"images/films/M_1.png",page:"pages/films.html",type:"Films"},
-{img:"images/films/M_2.png",page:"pages/films.html",type:"Films"},
-{img:"images/films/M_3.png",page:"pages/films.html",type:"Films"},
+/* FILMS */
 
-{img:"images/films/M_4.png",page:"pages/films.html",type:"Films"},
-{img:"images/films/M_5.png",page:"pages/films.html",type:"Films"}
+{img:"images/films/M_1.png",page:"pages/films.html",type:"Films",title:"Film 1"},
+{img:"images/films/M_2.png",page:"pages/films.html",type:"Films",title:"Film 2"},
+{img:"images/films/M_3.png",page:"pages/films.html",type:"Films",title:"Film 3"},
+{img:"images/films/M_4.png",page:"pages/films.html",type:"Films",title:"Film 4"},
+{img:"images/films/M_5.png",page:"pages/films.html",type:"Films",title:"Film 5"},
+{img:"images/films/M_6.png",page:"pages/films.html",type:"Films",title:"Film 6"},
+{img:"images/films/M_7.png",page:"pages/films.html",type:"Films",title:"Film 7"},
+{img:"images/films/M_8.png",page:"pages/films.html",type:"Films",title:"Film 8"},
+{img:"images/films/M_9.png",page:"pages/films.html",type:"Films",title:"Film 9"},
+{img:"images/films/M_10.png",page:"pages/films.html",type:"Films",title:"Film 10"},
+{img:"images/films/M_11.png",page:"pages/films.html",type:"Films",title:"Film 11"},
+{img:"images/films/M_12.png",page:"pages/films.html",type:"Films",title:"Film 12"},
+{img:"images/films/M_13.png",page:"pages/films.html",type:"Films",title:"Film 13"},
+{img:"images/films/M_14.png",page:"pages/films.html",type:"Films",title:"Film 14"},
+{img:"images/films/M_15.png",page:"pages/films.html",type:"Films",title:"Film 15"},
+{img:"images/films/M_16.png",page:"pages/films.html",type:"Films",title:"Film 16"},
+{img:"images/films/M_17.png",page:"pages/films.html",type:"Films",title:"Film 17"},
+{img:"images/films/M_18.png",page:"pages/films.html",type:"Films",title:"Film 18"},
 
+
+/* BOOKS */
+
+{img:"images/books/B_1.png",page:"pages/books.html",type:"Books",title:"Book 1"},
+{img:"images/books/B_2.png",page:"pages/books.html",type:"Books",title:"Book 2"},
+{img:"images/books/B_3.png",page:"pages/books.html",type:"Books",title:"Book 3"},
+
+
+/* WRITING */
+
+{img:"images/writing/W_1.png",page:"pages/writing.html",type:"Writing",title:"Essay 1"},
+{img:"images/writing/W_2.png",page:"pages/writing.html",type:"Writing",title:"Essay 2"},
+{img:"images/writing/W_3.png",page:"pages/writing.html",type:"Writing",title:"Essay 3"}
+
+]
 ]
 
 
@@ -315,7 +342,7 @@ el.innerHTML=`<img src="${entry.img}">`
 
 const angle=(-90+(i*(180/(total-1))))*(Math.PI/180)
 
-const radius=700
+const radius=520
 
 const x=Math.cos(angle)*radius
 const y=Math.sin(angle)*radius
