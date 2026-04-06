@@ -10,10 +10,11 @@
 
 <style>
 
-/* RESET */
+/* BASIC RESET */
 
 body{
 margin:0;
+overflow:hidden;
 font-family:sans-serif;
 cursor:none;
 background:white;
@@ -39,7 +40,7 @@ z-index:9999;
 
 transform:translate(-50%,-50%);
 
-transition:all .15s ease;
+transition:.15s;
 
 }
 
@@ -66,7 +67,7 @@ right:0;
 display:flex;
 justify-content:space-between;
 
-padding:24px 40px;
+padding:26px 40px;
 
 background:white;
 
@@ -83,31 +84,53 @@ margin-left:24px;
 }
 
 
-/* HOME AREA */
+/* CENTER TEXT PREVIEW */
 
-.home{
+.preview{
 
-height:100vh;
+position:fixed;
 
-display:flex;
-align-items:center;
-justify-content:center;
+top:45%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+text-align:center;
+
+pointer-events:none;
+
+}
+
+.preview h1{
+
+font-size:42px;
+margin:0;
+
+}
+
+.preview p{
+
+font-size:14px;
+opacity:.6;
 
 }
 
 
-/* SELECTION WHEEL */
+/* WHEEL AREA */
 
-.wheel{
+.wheel-area{
 
-position:relative;
+position:fixed;
 
-width:600px;
-height:600px;
+bottom:-200px;
+left:50%;
 
-border-radius:50%;
+transform:translateX(-50%);
 
-transition:transform 1s linear;
+width:1400px;
+height:800px;
+
+cursor:none;
 
 }
 
@@ -118,13 +141,17 @@ transition:transform 1s linear;
 
 position:absolute;
 
-width:80px;
+width:120px;
 
-opacity:.5;
+opacity:.35;
+
+filter:grayscale(100%);
 
 transition:
+
 transform .3s,
-opacity .3s;
+opacity .3s,
+filter .3s;
 
 }
 
@@ -137,10 +164,47 @@ display:block;
 
 .item.active{
 
-transform:scale(1.8);
+transform:scale(2);
+
 opacity:1;
 
+filter:none;
+
 z-index:10;
+
+}
+
+
+/* WIGGLE EFFECT */
+
+.item.near{
+
+transform:translateY(-10px);
+
+}
+
+
+/* FLOAT BUTTON */
+
+.skip{
+
+position:fixed;
+
+bottom:30px;
+right:30px;
+
+padding:14px 22px;
+
+border-radius:30px;
+
+background:black;
+color:white;
+
+text-decoration:none;
+
+font-size:14px;
+
+z-index:1000;
 
 }
 
@@ -149,7 +213,9 @@ z-index:10;
 </head>
 
 
+
 <body>
+
 
 <div class="cursor"></div>
 
@@ -172,11 +238,22 @@ z-index:10;
 </nav>
 
 
-<div class="home">
 
-<div class="wheel" id="wheel"></div>
+<div class="preview">
+
+<h1 id="previewTitle">Archive</h1>
+
+<p id="previewDesc">Move the cursor across the collection</p>
 
 </div>
+
+
+
+<div class="wheel-area" id="wheel"></div>
+
+
+
+<a class="skip" href="pages/films.html">Just take me to the lists</a>
 
 
 
@@ -201,91 +278,140 @@ el.addEventListener("mouseleave",()=>cursor.classList.remove("clickable"))
 })
 
 
-/* CONTENT ITEMS */
 
-const items=[
+/* ITEMS */
 
-{img:"images/books/B_1.png",link:"pages/books.html"},
-{img:"images/books/B_2.png",link:"pages/books.html"},
-{img:"images/films/M_1.png",link:"pages/films.html"},
-{img:"images/films/M_2.png",link:"pages/films.html"},
-{img:"images/films/M_3.png",link:"pages/films.html"}
+const entries=[
+
+{img:"images/books/B_1.png",page:"pages/books.html",type:"Books"},
+{img:"images/books/B_2.png",page:"pages/books.html",type:"Books"},
+{img:"images/books/B_3.png",page:"pages/books.html",type:"Books"},
+
+{img:"images/films/M_1.png",page:"pages/films.html",type:"Films"},
+{img:"images/films/M_2.png",page:"pages/films.html",type:"Films"},
+{img:"images/films/M_3.png",page:"pages/films.html",type:"Films"},
+
+{img:"images/films/M_4.png",page:"pages/films.html",type:"Films"},
+{img:"images/films/M_5.png",page:"pages/films.html",type:"Films"}
 
 ]
 
 
-/* BUILD WHEEL */
+
+/* BUILD SEMI CIRCLE */
 
 const wheel=document.getElementById("wheel")
 
-const total=10
+const total=entries.length
 
-for(let i=0;i<total;i++){
-
-const random=items[Math.floor(Math.random()*items.length)]
+entries.forEach((entry,i)=>{
 
 const el=document.createElement("a")
 
 el.className="item"
+el.href=entry.page
 
-el.href=random.link
+el.innerHTML=`<img src="${entry.img}">`
 
-el.innerHTML=`<img src="${random.img}">`
+const angle=(-90+(i*(180/(total-1))))*(Math.PI/180)
 
-const angle=(i/total)*360
+const radius=700
 
-el.style.transform=
-`rotate(${angle}deg) translate(250px) rotate(-${angle}deg)`
+const x=Math.cos(angle)*radius
+const y=Math.sin(angle)*radius
+
+el.style.left=700+x+"px"
+el.style.top=600+y+"px"
 
 wheel.appendChild(el)
 
-}
+})
+
+
+
+const items=document.querySelectorAll(".item")
+
+
+
+/* PREVIEW TEXT */
+
+const title=document.getElementById("previewTitle")
+
 
 
 /* CLOCK HAND SELECTION */
 
-const wheelItems=document.querySelectorAll(".item")
+wheel.addEventListener("mousemove",e=>{
 
-document.querySelector(".home").addEventListener("mousemove",e=>{
+cursor.style.opacity=0
 
-const rect=wheel.getBoundingClientRect()
+let closest=null
+let dist=9999
+
+items.forEach(item=>{
+
+const rect=item.getBoundingClientRect()
 
 const cx=rect.left+rect.width/2
 const cy=rect.top+rect.height/2
 
-const angle=Math.atan2(e.clientY-cy,e.clientX-cx)
+const d=Math.hypot(cx-e.clientX,cy-e.clientY)
 
-let index=Math.round(
-((angle+Math.PI)/(2*Math.PI))*wheelItems.length
+if(d<dist){
+dist=d
+closest=item
+}
+
+})
+
+items.forEach(i=>{
+i.classList.remove("active","near")
+})
+
+if(closest){
+
+closest.classList.add("active")
+
+title.textContent=closest.href.includes("books")?"Books":
+closest.href.includes("films")?"Films":
+closest.href.includes("writing")?"Writing":
+"Archive"
+
+items.forEach(i=>{
+
+const r=i.getBoundingClientRect()
+
+const d=Math.hypot(
+(r.left+r.width/2)-e.clientX,
+(r.top+r.height/2)-e.clientY
 )
 
-wheelItems.forEach(i=>i.classList.remove("active"))
+if(d<200 && i!==closest){
+i.classList.add("near")
+}
 
-if(wheelItems[index]){
-wheelItems[index].classList.add("active")
+})
+
 }
 
 })
 
 
-/* SLOW ROTATION */
 
-let rotation=0
+wheel.addEventListener("mouseleave",()=>{
 
-function spin(){
+cursor.style.opacity=1
 
-rotation+=0.02
+items.forEach(i=>{
+i.classList.remove("active","near")
+})
 
-wheel.style.transform=`rotate(${rotation}deg)`
+title.textContent="Archive"
 
-requestAnimationFrame(spin)
-
-}
-
-spin()
-
+})
 
 </script>
+
 
 
 </body>
