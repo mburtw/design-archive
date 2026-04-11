@@ -1,24 +1,15 @@
 const grid = document.getElementById("grid");
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
-const caption = document.getElementById("caption");
-const close = document.getElementById("close");
 
-/* LOAD SAVED IMAGES */
+/* Load saved */
 let items = JSON.parse(localStorage.getItem("gallery") || "[]");
 
 function render() {
   grid.innerHTML = "";
-
   items.forEach(item => {
     const img = document.createElement("img");
     img.src = item.url;
 
-    img.onclick = () => {
-      modal.style.display = "flex";
-      modalImg.src = item.url;
-      caption.innerHTML = item.caption.join("<br>");
-    };
+    img.onclick = () => openModal(item);
 
     grid.appendChild(img);
   });
@@ -26,21 +17,18 @@ function render() {
 
 render();
 
-/* MODAL CLOSE */
-close.onclick = () => modal.style.display = "none";
-modal.onclick = () => modal.style.display = "none";
+/* Drag & Drop */
+document.body.addEventListener("dragover", e => e.preventDefault());
 
-/* CLOUDINARY UPLOAD */
-const widget = cloudinary.createUploadWidget({
-  cloudName: "demo", // 🔴 CHANGE THIS
-  uploadPreset: "docs_upload_example" // 🔴 CHANGE THIS
-}, (error, result) => {
+document.body.addEventListener("drop", e => {
+  e.preventDefault();
 
-  if (!error && result.event === "success") {
+  const file = e.dataTransfer.files[0];
+  const reader = new FileReader();
 
-    const url = result.info.secure_url;
+  reader.onload = function(event) {
+    const url = event.target.result;
 
-    // Ask for caption
     const line1 = prompt("Caption line 1:");
     const line2 = prompt("Caption line 2:");
     const line3 = prompt("Caption line 3:");
@@ -51,12 +39,11 @@ const widget = cloudinary.createUploadWidget({
     };
 
     items.unshift(newItem);
-
     localStorage.setItem("gallery", JSON.stringify(items));
     render();
-  }
-});
+  };
 
-document.getElementById("upload_widget").onclick = () => {
+  reader.readAsDataURL(file);
+});idget").onclick = () => {
   widget.open();
 };
