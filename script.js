@@ -1,49 +1,46 @@
 const grid = document.getElementById("grid");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const caption = document.getElementById("caption");
+const close = document.getElementById("close");
 
-/* Load saved */
-let items = JSON.parse(localStorage.getItem("gallery") || "[]");
+/* 👉 EDIT THIS LIST ONLY */
+const images = [
+  "images/img1.jpg",
+  "images/img2.jpg",
+  "images/img3.jpg"
+];
 
-function render() {
-  grid.innerHTML = "";
-  items.forEach(item => {
-    const img = document.createElement("img");
-    img.src = item.url;
+/* Convert filename → caption */
+function getCaption(path) {
+  const name = path.split("/").pop().split(".")[0];
 
-    img.onclick = () => openModal(item);
+  // split by dash or underscore
+  const parts = name.split(/[-_]/);
 
-    grid.appendChild(img);
-  });
+  return [
+    parts[0] || "",
+    parts[1] || "",
+    parts[2] || ""
+  ];
 }
 
-render();
+/* Build gallery */
+images.forEach(src => {
+  const img = document.createElement("img");
+  img.src = src;
 
-/* Drag & Drop */
-document.body.addEventListener("dragover", e => e.preventDefault());
+  const cap = getCaption(src);
 
-document.body.addEventListener("drop", e => {
-  e.preventDefault();
-
-  const file = e.dataTransfer.files[0];
-  const reader = new FileReader();
-
-  reader.onload = function(event) {
-    const url = event.target.result;
-
-    const line1 = prompt("Caption line 1:");
-    const line2 = prompt("Caption line 2:");
-    const line3 = prompt("Caption line 3:");
-
-    const newItem = {
-      url,
-      caption: [line1, line2, line3]
-    };
-
-    items.unshift(newItem);
-    localStorage.setItem("gallery", JSON.stringify(items));
-    render();
+  img.onclick = () => {
+    modal.style.display = "flex";
+    modalImg.src = src;
+    caption.innerHTML = cap.join("<br>");
   };
 
-  reader.readAsDataURL(file);
-});idget").onclick = () => {
-  widget.open();
-};
+  grid.appendChild(img);
+});
+
+/* Close modal */
+close.onclick = () => modal.style.display = "none";
+modal.onclick = () => modal.style.display = "none";
